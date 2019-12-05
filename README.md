@@ -1,7 +1,7 @@
 # Event Monitoring Manager
 ![workflow](https://github.com/pcon/eventMonitoring-manager/workflows/Lint%20and%20Test/badge.svg)
 [![Code Climate](https://codeclimate.com/github/pcon/eventMonitoring-manager/badges/gpa.svg)](https://codeclimate.com/github/pcon/eventMonitoring-manager)
-[![codecov](https://codecov.io/gh/pcon/eventMonitoring-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/pcon/eventMonitoring-manager)
+[![Coverage Status](https://img.shields.io/coveralls/github/pcon/eventMonitoring-manager.svg)](https://coveralls.io/github/pcon/eventMonitoring-manager?branch=master)
 
 This application is very much a work in progress and doesn't actually do anything yet.  I'll update the README with more information as the project moves along.
 
