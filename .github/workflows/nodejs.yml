@@ -1,4 +1,4 @@
-name: Node CI
+name: Lint and Test
 
 on: [push]
 
@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -17,9 +17,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
+    - name: npm install, lint, and test
       run: |
         npm ci
+        npm run lint
         npm test
       env:
         CI: true
@@ -29,3 +30,4 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         file: ./coverage/clover.xml
         flags: unittests
+        yml: ./codecov.yml
