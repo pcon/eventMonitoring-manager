@@ -1,6 +1,7 @@
 beforeEach(function () {
     jest.restoreAllMocks();
     jest.resetModules();
+    jest.spyOn(console, 'error').mockImplementation();
 
     global.config = {};
 });
@@ -37,7 +38,14 @@ jest.mock('../lib/frontend', function () {
 });
 
 jest.mock('../lib/utils/logger');
-jest.mock('../lib/utils/polling');
+jest.mock('../lib/utils/polling', function () {
+    return {
+        getJobName: jest.fn().mockImplementation(function (topic) {
+            return topic;
+        })
+    };
+});
+
 jest.mock('../lib/utils/streaming', function () {
     return {
         getJobName: jest.fn().mockImplementation(function (topic) {
@@ -75,7 +83,6 @@ describe('Start', function () {
         });
 
         const config = require('../lib/utils/config'); // eslint-disable-line global-require
-        jest.spyOn(console, 'error').mockImplementationOnce(function () {});
 
         require('../server'); // eslint-disable-line global-require
         expect(config.loadConfig).toBeCalled();
@@ -94,7 +101,6 @@ describe('Start', function () {
         });
 
         const config = require('../lib/utils/config'); // eslint-disable-line global-require
-        jest.spyOn(console, 'error').mockImplementation();
 
         require('../server'); // eslint-disable-line global-require
         expect(config.loadConfig).toBeCalled();
