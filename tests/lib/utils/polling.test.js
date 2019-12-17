@@ -49,5 +49,5 @@ test('Get Query String', function () {
     const type = 'API';
     const expected = 'select Id,CreatedDate,EventType,LogDate,LogFile,LogFileLength,LogFileContentType,LogFileFieldNames,LogFileFieldTypes from EventLogFile where EventType = \'API\' AND Interval = \'Hourly\'';
 
-    expect(polling.getQueryString(type)).toBe(expected);
+    expect(polling.__getQueryString(type)).toBe(expected);
 });
