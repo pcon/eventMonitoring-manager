@@ -1,7 +1,4 @@
-const MongoClient = {
-    connect: jest.fn()
-};
+const mongo = jest.genMockFromModule('mongodb');
+jest.mock('mongodb');
 
-module.exports = {
-    MongoClient: MongoClient
-};
+module.exports = mongo;
