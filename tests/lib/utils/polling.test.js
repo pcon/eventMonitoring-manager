@@ -1,5 +1,3 @@
-const log = require('../../../lib/utils/logger');
-
 beforeEach(function () {
     jest.restoreAllMocks();
     jest.resetModules();
