@@ -6,7 +6,7 @@ afterEach(function () {
     jest.clearAllMocks();
 });
 
-const transformers = require('../../../lib/utils/transformers');
+const transformers = require('../../../../lib/utils/transformers');
 
 describe('Type Map', function () {
     test('Valid mapping', function () {

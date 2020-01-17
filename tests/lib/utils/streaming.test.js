@@ -74,7 +74,7 @@ describe('Subscribe', function () {
             });
     });
 
-    test('Failure', function () {
+    test('Failure - Login', function () {
         expect.assertions(4);
 
         const streaming = require('../../../lib/utils/streaming'); // eslint-disable-line global-require
@@ -104,6 +104,39 @@ describe('Subscribe', function () {
                 expect(sfdc.getFayeClient).not.toBeCalled();
                 expect(faye_client.subscribe).not.toBeCalled();
                 expect(err).toMatch('I AM ERROR');
+            });
+    });
+
+    test('Failure - Handle Subscription', function () {
+        expect.assertions(4);
+
+        const streaming = require('../../../lib/utils/streaming'); // eslint-disable-line global-require
+        const sfdc = require('../../../lib/utils/sfdc'); // eslint-disable-line global-require
+
+        const faye_client = {
+            subscribe: jest.fn()
+        };
+
+        sfdc.login = jest.fn().mockImplementation(resolve_cleanly);
+        sfdc.getFayeClient = jest.fn().mockImplementation(function () {
+            throw new Error('I AM OTHER ERROR');
+        });
+
+        const job = {
+            attrs: {
+                data: {
+                    topic: 'ApiEventStream'
+                }
+            },
+            touch: jest.fn()
+        };
+
+        return streaming.__subscribe(job)
+            .catch(function (err) {
+                expect(sfdc.login).toBeCalled();
+                expect(sfdc.getFayeClient).toBeCalled();
+                expect(faye_client.subscribe).not.toBeCalled();
+                expect(err.message).toMatch('I AM OTHER ERROR');
             });
     });
 });

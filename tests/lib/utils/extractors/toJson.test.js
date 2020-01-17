@@ -6,7 +6,7 @@ afterEach(function () {
     jest.clearAllMocks();
 });
 
-const extractors = require('../../../lib/utils/extractors');
+const extractor = require('../../../../lib/utils/extractors/toJson');
 
 describe('CSV to JSON Extractor', function () {
     test('Valid CSV data', function () {
@@ -23,7 +23,7 @@ describe('CSV to JSON Extractor', function () {
         };
         const expected = [line1, line2];
 
-        return extractors.cvsToJson(data).then(function (results) {
+        return extractor(undefined, data).then(function (results) {
             expect(results).toEqual(expected);
         });
     });
@@ -34,7 +34,7 @@ describe('CSV to JSON Extractor', function () {
         const data = '';
         const expected = [];
 
-        return extractors.cvsToJson(data).then(function (results) {
+        return extractor(undefined, data).then(function (results) {
             expect(results).toEqual(expected);
         });
     });
@@ -44,7 +44,7 @@ describe('CSV to JSON Extractor', function () {
 
         const data = '"field1", "field2"\n"foo1", "bar1"\n"foo2", "bar2';
 
-        return extractors.cvsToJson(data).catch(function (err) {
+        return extractor(undefined, data).catch(function (err) {
             expect(err.message).toContain('unclosed_quote');
         });
     });

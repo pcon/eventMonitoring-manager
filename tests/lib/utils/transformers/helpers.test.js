@@ -1,4 +1,4 @@
-const helpers = require('../../../lib/utils/helpers');
+const helpers = require('../../../../lib/utils/transformers/helpers');
 
 test('No Op', function () {
     const data = 'This should not change';
