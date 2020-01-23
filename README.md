@@ -15,7 +15,7 @@ This application is very much a work in progress and doesn't actually do anythin
 
 # To-Do
 - [ ] Write test for existing functionality
-- [ ] Write loader for Mongo
+- [X] Write loader for Mongo
 - [ ] Write setup command
 - [ ] Write usage dashboard
 - [ ] Implement user auth
