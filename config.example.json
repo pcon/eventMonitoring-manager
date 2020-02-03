@@ -1,0 +1,36 @@
+{
+    "server": {
+        "port": 3000,
+        "logging": {
+            "level": "debug",
+            "file": "/tmp/emanager.log",
+            "logger": "bunyan"
+        }
+    },
+    "agenda": {
+        "db_name": "agenda",
+        "collection_name": "agendaJobs",
+        "server": "mongodb://localhost:27017/"
+    },
+    "monitoring": {
+        "type": "mongo",
+        "db_name": "monitoring",
+        "server": "mongodb://localhost:27017/"
+    },
+    "sfdc": {
+        "username": "user@example.com",
+        "password": "passwordToken",
+        "sandbox": false
+    },
+    "polling": {
+        "extractors": [
+            "toJson"
+        ],
+        "transformers": [
+            "typeMap"
+        ],
+        "loaders": [
+            "mongodb"
+        ]
+    }
+}
