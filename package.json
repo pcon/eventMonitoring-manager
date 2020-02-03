@@ -1,31 +1,51 @@
 {
-  "name": "eventmonitoring-manager",
-  "version": "1.0.0",
-  "description": "A manager for downloading event monitoring data and pushing that data around",
-  "main": "server.js",
-  "scripts": {
-    "server": "node server.js",
-    "lint": "npm run lint-eslint",
-    "lint-eslint": "./node_modules/.bin/eslint server.js lib/* tests/*",
-    "test": "./node_modules/.bin/jest"
-  },
-  "author": "Patrick Connelly",
-  "license": "GPL-3.0-or-later",
-  "dependencies": {
-    "agenda": "^2.1.0",
-    "agendash": "^1.0.0",
-    "bunyan": "^1.8.12",
-    "csvtojson": "^2.0.10",
-    "express": "^4.17.1",
-    "jsforce": "^1.9.3",
-    "jsonfile": "^5.0.0",
-    "lodash": "^4.17.15",
-    "mongodb": "^3.3.5",
-    "q": "^1.5.1",
-    "request-promise-native": "^1.0.8"
-  },
-  "devDependencies": {
-    "eslint": "^6.6.0",
-    "jest": "^24.9.0"
-  }
+    "name": "eventmonitoring-manager",
+    "version": "1.0.0",
+    "description": "A manager for downloading event monitoring data and pushing that data around",
+    "main": "server.js",
+    "scripts": {
+        "server": "node server.js",
+        "setup": "node scripts/setup.js",
+        "lint": "npm run lint-eslint && npm run lint-md",
+        "lint-md": "./node_modules/.bin/remark --no-stdout -f *.md .github/**/*.md",
+        "lint-eslint": "./node_modules/.bin/eslint server.js lib/* tests/*",
+        "test": "./node_modules/.bin/jest"
+    },
+    "remarkConfig": {
+        "plugins": [
+            "remark-preset-lint-recommended",
+            [
+                "remark-lint-final-newline",
+                false
+            ],
+            [
+                "lint-list-item-indent",
+                "space"
+            ]
+        ]
+    },
+    "author": "Patrick Connelly",
+    "license": "GPL-3.0-or-later",
+    "dependencies": {
+        "agenda": "^2.1.0",
+        "agendash": "^1.0.0",
+        "bunyan": "^1.8.12",
+        "csvtojson": "^2.0.10",
+        "express": "^4.17.1",
+        "jsforce": "^1.9.3",
+        "jsonfile": "^5.0.0",
+        "lodash": "^4.17.15",
+        "mongodb": "^3.3.5",
+        "q": "^1.5.1",
+        "request-promise-native": "^1.0.8"
+    },
+    "devDependencies": {
+        "eslint": "^6.6.0",
+        "inquirer": "^7.0.3",
+        "jest": "^24.9.0",
+        "remark": "^11.0.2",
+        "remark-cli": "^7.0.1",
+        "remark-lint": "^6.0.5",
+        "remark-preset-lint-recommended": "^3.0.3"
+    }
 }

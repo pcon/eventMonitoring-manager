@@ -1,7 +1,8 @@
 global.config = {
     server: {
         logging: {
-            level: 'trace'
+            level: 'trace',
+            logger: 'bunyan'
         }
     }
 };

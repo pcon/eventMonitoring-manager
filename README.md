@@ -16,7 +16,7 @@ This application is very much a work in progress and doesn't actually do anythin
 # To-Do
 - [ ] Write test for existing functionality
 - [X] Write loader for Mongo
-- [ ] Write setup command
+- [X] Write setup command
 - [ ] Write usage dashboard
 - [ ] Implement user auth
 - [ ] Write loader for Splunk
