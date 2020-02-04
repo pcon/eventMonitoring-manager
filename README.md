@@ -21,6 +21,7 @@ This application is very much a work in progress and doesn't actually do anythin
 - [ ] Implement user auth
 - [ ] Write loader for Splunk
 - [ ] Write loader for New Relic
-- [ ] Write loader for flat file storage
+- [X] Write loader for flat file storage
 - [ ] Write loader for Amazon Glacier
 - [ ] Write configuration management interface
+- [ ] Write scheduled job to compress flat files

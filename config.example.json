@@ -23,6 +23,13 @@
         "sandbox": false
     },
     "polling": {
+        "config": {
+            "loaders": {
+                "flatfile": {
+                    "root": "/data/eventMonitoring/"
+                }
+            }
+        },
         "extractors": [
             "toJson"
         ],
@@ -30,7 +37,8 @@
             "typeMap"
         ],
         "loaders": [
-            "mongodb"
+            "mongodb",
+            "flatfile"
         ]
     }
 }
